@@ -37,4 +37,26 @@ const employeePrompt = () =>{
                  'Add Department'
             ]
     }])
+    //give a switch method for the response
+    .then(response=>{
+        const {choices} = response;
+        let userChoices;
+        switch (choices){
+            case 'View All Employees':
+                break;
+            case 'Add Employee':
+                break;
+            case 'Update Employee Role':
+                break;
+            case 'View All Roles':
+                break;
+            case 'Add Role':
+                break;
+            case 'View All Departments':
+                break;
+            case 'Add Department':
+                break;
+            default:
+                console.log('Please enter one position');
+    })
 }
