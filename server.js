@@ -11,7 +11,9 @@ const db = mysql.createConnection({
     user: 'root', 
     password: 'password',
     database: 'company_db'
-});
+},
+console.log(`Connected to the company_db database.`)
+);
 
 //welcome image
 console.log("*---------------------------------*");
@@ -58,5 +60,12 @@ const employeePrompt = () =>{
                 break;
             default:
                 console.log('Please enter one position');
-    })
+        }
+    });
+}
+
+//View All Employee function
+viewEmployee = () => {
+    console.log('All Employee below:');
+    const sql = ``;
 }
