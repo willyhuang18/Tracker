@@ -80,4 +80,11 @@ viewEmployee = () => {
         LEFT JOIN employee manager 
         ON employee.manager_id = manager.id
         `;
+    //using promise method and  Query database
+    db.promise().query(sql, (err, employee) =>{
+        if(err){
+            throw err;
+        }
+        console.log(employee);
+    });
 }
