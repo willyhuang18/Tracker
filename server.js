@@ -45,6 +45,7 @@ const employeePrompt = () =>{
         let userChoices;
         switch (choices){
             case 'View All Employees':
+                viewEmployee();
                 break;
             case 'Add Employee':
                 break;
@@ -65,7 +66,7 @@ const employeePrompt = () =>{
 }
 
 //View All Employee function
-viewEmployee = () => {
+const viewEmployee = () => {
     console.log('All Employee below:');
     const sql = `SELECT employee.id, 
         employee.first_name, 
@@ -81,10 +82,24 @@ viewEmployee = () => {
         ON employee.manager_id = manager.id
         `;
     //using promise method and  Query database
-    db.promise().query(sql, (err, employee) =>{
+    db.promise().query(sql, (err, result) =>{
         if(err){
             throw err;
         }
-        console.log(employee);
+        console.log(result);
     });
+}
+//view add employee
+const addEmployee = () => {
+    inquirer.prompt([{
+      type:'input',
+      name:'firstName',
+      message:'What is the your First name?',  
+    },
+    {
+        type:'input',
+        name:'lastName',
+        message:'What is the your Last name?', 
+    }
+])
 }
