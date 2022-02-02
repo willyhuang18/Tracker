@@ -30,5 +30,10 @@ CREATE TABLE employee(
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
     role_id INT,
+    INDEX role_index(role_id),
+    CONSTRAINT con_role 
+    FOREIGN KEY(role_id)
+    REFERENCES role(id)
+    ON DELETE SET NULL,
     manager_id INT
 );
