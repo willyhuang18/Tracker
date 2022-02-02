@@ -21,3 +21,20 @@ console.log("|                to               |");
 console.log("|            the Company          |");
 console.log("|                                 |");
 console.log("*---------------------------------*");
+
+//adding prompt for the user
+const employeePrompt = () =>{
+    inquirer.prompt([{
+        type: 'list',
+        name:'choices',
+        message: ' Please select at least one below: ',
+        choices:['View All Employees',
+                 'Add Employee',
+                 'Update Employee Role',
+                 'View All Roles',
+                 'Add Role',
+                 'View All Departments',
+                 'Add Department'
+            ]
+    }])
+}
