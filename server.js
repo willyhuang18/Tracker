@@ -101,5 +101,11 @@ const addEmployee = () => {
         name:'lastName',
         message:'What is the your Last name?', 
     }
-])
+    ])
+    .then(response =>{
+        const {firstName, lastName} = response;
+        const fl =[];
+        fl.push(firstName, lastName);
+        console.log(fl);
+    })
 }
