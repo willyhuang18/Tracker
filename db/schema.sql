@@ -17,6 +17,12 @@ CREATE TABLE role(
     -- Indexes are special lookup tables that the database search engine 
     -- can use to speed up data retrieval.
     INDEX department_index(department_id),
+    -- using Constraint
+    -- Constraints are the rules enforced on the data columns of a table.
+    CONSTRAINT con_department 
+    FOREIGN KEY (department_id)
+    REFERENCES department(id)
+    ON DELETE SET NULL
 );
 
 CREATE TABLE employee(
