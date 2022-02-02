@@ -10,5 +10,14 @@ const db = mysql.createConnection({
     host:'localhost',
     user: 'root', 
     password: 'password',
-    database: ''
+    database: 'company_db'
 });
+
+//welcome image
+console.log("*---------------------------------*");
+console.log("|                                 |");
+console.log("|             Welcome             |");
+console.log("|                to               |");
+console.log("|            the Company          |");
+console.log("|                                 |");
+console.log("*---------------------------------*");
