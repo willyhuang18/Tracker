@@ -21,6 +21,7 @@ db.connect(err => {
         throw err;
     }
     console.log(db.threadId);
+    employeePrompt();
 })
 
 
@@ -32,7 +33,6 @@ console.log("|                to               |");
 console.log("|            the Company          |");
 console.log("|                                 |");
 console.log("*---------------------------------*");
-employeePrompt();
 
 //adding prompt for the user
 const employeePrompt = () =>{
@@ -52,7 +52,6 @@ const employeePrompt = () =>{
     //give a switch method for the response
     .then(response=>{
         const {choices} = response;
-        let userChoices;
         switch (choices){
             case 'View All Employees':
                 viewEmployee();
