@@ -197,8 +197,14 @@ const updateEmployee = ()=> {
             }
         ));
         console.log(employeeId);
+        inquirer.prompt([
+            {
+                type: 'list',
+                name: 'name',
+                message: "Who would you like to promotion with?",
+                choices: employeeId
+            }
+        ])
+
     })
-
-
-
 }
