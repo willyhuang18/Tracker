@@ -138,6 +138,19 @@ const addEmployee = () => {
             .then(choice=>{
                 const roles = choice.role;
                 input.push(roles);
+
+                //do the same to the manager_id
+                const manager = `SELECT * FROM employee`;
+                db.promise().query(manager, (err, data)=>{
+                    if(err){
+                        console.log(err);
+                    }
+                    const managerId = data.map(({id, firstName, lastName}) => 
+                        ({
+                            name: firstName + lastName, value: id
+                        }));
+                        console.log(managerId);
+                })
             })
         })
     })
