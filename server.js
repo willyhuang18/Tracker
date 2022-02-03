@@ -280,5 +280,22 @@ const addRole = () =>{
         message: "Please enter the salary you want for this position?",
         }
     ])
-    
+    .then( response => {
+        const money = [response.role, response.salary];
+
+        //getting data from department table
+        const depSql = `SELECT name, id FROM department`; 
+
+        db.promise().query(depSql, (err, data) => {
+            if(err){
+                console.log(err);
+            }
+            //map the input from user
+            const department = data.map(({name, id}) => (
+                    {
+                        name: name, value: id
+                    }
+                ));
+        })
+    })
 }
