@@ -329,8 +329,14 @@ const addRole = () =>{
 //view all department function
 const viewAllDepartment = () =>{
     console.log('please view the department below:');
+
     const deptSql = `SELECT department.
     id AS id, department.name AS department 
     FROM department
     `;
+    db.promise().query(deptSql, (err, data) =>{
+        if(err){
+            console.log(err);
+        }
+    } )
 }
