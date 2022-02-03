@@ -259,4 +259,9 @@ const viewAllRole = () =>{
     FROM role
     INNER JOIN department ON role.department_id = department.id
     `;
+    db.promise().query(roleSql, (err, data) => {
+        if(err){
+            console.log(err);
+        }
+    })
 }
