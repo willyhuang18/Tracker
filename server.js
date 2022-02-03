@@ -134,6 +134,11 @@ const addEmployee = () => {
                 choices: roleId
                 }
             ])
+            //push the data into the array
+            .then(choice=>{
+                const roles = choice.role;
+                input.push(roles);
+            })
         })
     })
 }
