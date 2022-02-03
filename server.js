@@ -114,36 +114,26 @@ const addEmployee = () => {
     ])
     //adding the role for the employee
     .then(response =>{
-        const {firstName, lastName} = response;
-        const fl =[];
-        fl.push(firstName, lastName);
-        console.log(fl);
-    inquirer.prompt([
-            {
-            type: 'list',
-            name: 'role',
-            message: "What is the position you at?",
-            choices: ["Software Engineer",
-            "Human Resources Manager",
-            "Accountant",
-            "Data Analyst",
-            "Financial Analyst",
-            "Operating Officer",
-            "Marketing Manager",
-            "Product manager",
-            "Human resource personnel",
-            "Customer service representative"]
+        //using sql query to get the data frm sql file
+        const input = [response.firstName, response.lastName]
+        //insert the role from role table
+        const role = `SELECT role.id, role.title FROM role`;
+        db.promise().query(role, (err, data) => {
+            if(err){
+                console.log(err);
             }
-        ])
-        .then(choice =>{
-            const role = choice.role;
-            //push the role into the array in employee
-            fl.push(role);
+            const roleId = data.map(({id, title}) => (
+                {name: title, value: id}
+                ));
+            //insert the 'roleId' as the choice for the following prompt
+            inquirer.prompt([
+                {
+                type: 'list',
+                name: 'role',
+                message: "What is the position you at?",
+                choices: roleId
+                }
+            ])
         })
-    inquirer.prompt([
-        {
-
-        }
-    ])
     })
 }
