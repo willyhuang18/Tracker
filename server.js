@@ -102,10 +102,33 @@ const addEmployee = () => {
         message:'What is the your Last name?', 
     }
     ])
+    //adding the role for the employee
     .then(response =>{
         const {firstName, lastName} = response;
         const fl =[];
         fl.push(firstName, lastName);
         console.log(fl);
+        inquirer.prompt([
+            {
+            type: 'list',
+            name: 'role',
+            message: "What is the position you at?",
+            choices: ["Software Engineer",
+            "Human Resources Manager",
+            "Accountant",
+            "Data Analyst",
+            "Financial Analyst",
+            "Operating Officer",
+            "Marketing Manager",
+            "Product manager",
+            "Human resource personnel",
+            "Customer service representative"]
+            }
+        ])
+        .then(choice =>{
+            const role = choice.role;
+            //push the role into the array in employee
+            fl.push(role);
+        })
     })
 }
