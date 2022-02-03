@@ -319,8 +319,18 @@ const addRole = () =>{
                         console.log(err);
                     }
                     console.log(response.role + 'successfully added');
+                    viewAllRole();
                 })
             })
         })
     })
+}
+
+//view all department function
+const viewAllDepartment = () =>{
+    console.log('please view the department below:');
+    const deptSql = `SELECT department.
+    id AS id, department.name AS department 
+    FROM department
+    `;
 }
