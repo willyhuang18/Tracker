@@ -15,6 +15,15 @@ const db = mysql.createConnection({
 console.log(`Connected to the company_db database.`)
 );
 
+//check any connection err to the sql 
+db.connect(err => {
+    if(err){
+        throw err;
+    }
+    console.log(db.threadId);
+})
+
+
 //welcome image
 console.log("*---------------------------------*");
 console.log("|                                 |");
@@ -23,6 +32,7 @@ console.log("|                to               |");
 console.log("|            the Company          |");
 console.log("|                                 |");
 console.log("*---------------------------------*");
+employeePrompt();
 
 //adding prompt for the user
 const employeePrompt = () =>{
@@ -108,7 +118,7 @@ const addEmployee = () => {
         const fl =[];
         fl.push(firstName, lastName);
         console.log(fl);
-        inquirer.prompt([
+    inquirer.prompt([
             {
             type: 'list',
             name: 'role',
@@ -130,5 +140,10 @@ const addEmployee = () => {
             //push the role into the array in employee
             fl.push(role);
         })
+    inquirer.prompt([
+        {
+
+        }
+    ])
     })
 }
