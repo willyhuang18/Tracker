@@ -205,6 +205,24 @@ const updateEmployee = ()=> {
                 choices: employeeId
             }
         ])
-
+        //then callback function
+        .then(choice => {
+            const employees = choice.name;
+            const input = [];
+            input.push(employees);
+            //getting data from employee table
+            const role = `SELECT * FROM role`;
+            
+            db.promise().query(role, (err, data) => {
+                if(err){
+                    console.log(err);
+                }
+                const roleId = data.map(({ id, title }) => (
+                    { 
+                        name: title, value: id 
+                    }
+                ));
+            })
+        })
     })
 }
