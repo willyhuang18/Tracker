@@ -222,6 +222,22 @@ const updateEmployee = ()=> {
                         name: title, value: id 
                     }
                 ));
+              console.log(roleId);
+              inquirer.prompt([
+                  {
+                    type: 'list',
+                    name: 'name',
+                    message: "What is the position after promotion?",
+                    choices: roleId  
+                  }
+              ])
+              //callback 
+              .then(response =>{
+                  const roles = response.role;
+                  input.push(roles)
+                  console.log(input);
+                  
+              })  
             })
         })
     })
