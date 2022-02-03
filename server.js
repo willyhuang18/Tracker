@@ -299,14 +299,26 @@ const addRole = () =>{
             inquirer.prompt([
                 {
                     type: 'input', 
-                    name: 'role',
+                    name: 'department',
                     message: "Please enter the department that this position belong to",
                     choice: department 
                 }
             ])
             //callback
             .then(response =>{
+                const dept = response.department;
+                money.push(dept);
                 
+                const deptSql =`
+                INSERT INTO role (title, salary, department_id)
+                VALUES (?, ?, ?)
+                `;
+                //connect with the query
+                db.query(depSql, (err, data)=>{
+                    if(err){
+                        console.log(err);
+                    }
+                })
             })
         })
     })
