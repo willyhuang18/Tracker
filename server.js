@@ -58,16 +58,22 @@ const employeePrompt = () =>{
                 viewEmployee();
                 break;
             case 'Add Employee':
+                addEmployee();
                 break;
             case 'Update Employee Role':
+                updateEmployee();
                 break;
             case 'View All Roles':
+                viewAllRole();
                 break;
             case 'Add Role':
+                addRole();
                 break;
             case 'View All Departments':
+                viewAllDepartment();
                 break;
             case 'Add Department':
+                addDepartment();
                 break;
             default:
                 console.log('Please enter one position');
