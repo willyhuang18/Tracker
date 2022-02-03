@@ -164,7 +164,16 @@ const addEmployee = () => {
                     .then(choices =>{
                         const managers = choices.manager;
                         input.push(managers);
-                        
+                        const employeeSql = `INSERT INTO employee (first_name, last_name, role_id, manager_id)
+                        VALUES (?, ?, ?, ?)`;
+                        db.query(employeeSql, input, (err, result)=>{
+                            if(err){
+                                console.log(err);
+                            }
+                            console.log("Employee Added");
+                            //execute the employee function
+                            viewEmployee();
+                        })
                     })
                 })
             })
