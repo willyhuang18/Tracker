@@ -318,7 +318,7 @@ const addRole = () =>{
                     if(err){
                         console.log(err);
                     }
-                    console.log(response.role + 'successfully added');
+                    console.log(response.role + 'is successfully added');
                     viewAllRole();
                 })
             })
@@ -350,5 +350,16 @@ const addDepartment = () =>{
            message:'What department you want add?' 
         }
     ])
-    
+    .then(response =>{
+        const department = `
+        INSERT INTO department (name)
+        VALUES (?)
+        `;
+        db.query(department, response.department, (err, data) =>{
+            if(err){
+                console.log(err);
+            }
+            console.log(response.department + 'is successfully added');
+        })
+    })
 }
