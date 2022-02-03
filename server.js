@@ -265,3 +265,20 @@ const viewAllRole = () =>{
         }
     })
 }
+
+//add role function 
+const addRole = () =>{
+    inquirer.prompt([
+        {
+         type: 'input', 
+         name: 'role',
+         message: "Please enter the position you would like to add?",
+        },
+        {
+        type: 'input', 
+        name: 'salary',
+        message: "Please enter the salary you want for this position?",
+        }
+    ])
+    
+}
