@@ -249,3 +249,14 @@ const updateEmployee = ()=> {
         })
     })
 }
+
+//view all Roles function
+const viewAllRole = () =>{
+    console.log('please view the position below:');
+    //getting data from role table
+    const roleSql = `
+    SELECT role.id, role.title, department.name AS department
+    FROM role
+    INNER JOIN department ON role.department_id = department.id
+    `;
+}
