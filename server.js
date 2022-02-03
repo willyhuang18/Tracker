@@ -180,3 +180,25 @@ const addEmployee = () => {
         })
     })
 }
+
+
+//Update Employee Role function
+const updateEmployee = ()=> {
+    //getting data from employee table
+    const employee = `SELECT * FROM employee`;
+    //using sql query to get the data frm sql file
+    db.promise().query(employee, (err, data) => {
+        if(err){
+            console.log(err);
+        }
+        const employeeId = data.map(({ id, firstName, lastName }) => (
+            { 
+                name: firstName + lastName, value: id 
+            }
+        ));
+        console.log(employeeId);
+    })
+
+
+
+}
