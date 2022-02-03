@@ -360,6 +360,8 @@ const addDepartment = () =>{
                 console.log(err);
             }
             console.log(response.department + 'is successfully added');
+            //execute view department
+            viewAllDepartment();
         })
     })
 }
