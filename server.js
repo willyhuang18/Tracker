@@ -340,3 +340,15 @@ const viewAllDepartment = () =>{
         }
     } )
 }
+
+//Add department function 
+const addDepartment = () =>{
+    inquirer.prompt([
+        {
+           type:'input',
+           name:'department',
+           message:'What department you want add?' 
+        }
+    ])
+    
+}
