@@ -296,6 +296,18 @@ const addRole = () =>{
                         name: name, value: id
                     }
                 ));
+            inquirer.prompt([
+                {
+                    type: 'input', 
+                    name: 'role',
+                    message: "Please enter the department that this position belong to",
+                    choice: department 
+                }
+            ])
+            //callback
+            .then(response =>{
+                
+            })
         })
     })
 }
