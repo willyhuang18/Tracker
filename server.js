@@ -236,7 +236,14 @@ const updateEmployee = ()=> {
                   const roles = response.role;
                   input.push(roles)
                   console.log(input);
-                  
+                  const employeeSql = `UPDATE employee SET role_id = ? WHERE id = ?`;
+                  db.query(employeeSql, (err, res)=>{
+                    if(err){
+                        console.log(err);
+                    }
+                    console.log('Employee had promo');
+                    viewEmployee();
+                  })
               })  
             })
         })
