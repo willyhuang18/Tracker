@@ -150,6 +150,22 @@ const addEmployee = () => {
                             name: firstName + lastName, value: id
                         }));
                         console.log(managerId);
+
+                    //adding prompt for the manager
+                    //insert the mangerId as the choice
+                    inquirer.prompt([
+                        {
+                            type: 'list',
+                            name: 'role',
+                            message: "What is the position you at?",
+                            choices: managerId
+                        }
+                    ])
+                    .then(choices =>{
+                        const managers = choices.manager;
+                        input.push(managers);
+                        
+                    })
                 })
             })
         })
