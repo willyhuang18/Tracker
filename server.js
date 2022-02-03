@@ -318,6 +318,7 @@ const addRole = () =>{
                     if(err){
                         console.log(err);
                     }
+                    console.log(response.role + 'successfully added');
                 })
             })
         })
