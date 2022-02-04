@@ -101,7 +101,8 @@ const viewEmployee = () => {
     .then( ([rows,fields]) => {
         console.table(rows);
       })
-      .catch(console.log) 
+      .catch(console.log)
+      employeePrompt();
 }
 //view add employee
 const addEmployee = () => {
@@ -268,6 +269,7 @@ const viewAllRole = () =>{
         console.table(rows);
       })
       .catch(console.log)
+      employeePrompt();
 }
 
 //add role function 
@@ -343,6 +345,7 @@ const viewAllDepartment = () =>{
         console.table(rows);
       })
       .catch(console.log)
+      employeePrompt();
 }
 
 //Add department function 
