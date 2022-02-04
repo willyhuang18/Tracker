@@ -3,7 +3,7 @@ const mysql = require('mysql2')
 // import inquirer 
 const inquirer = require('inquirer'); 
 // import console.table
-const table = require('console.table');
+const table  = require('console.table');
 
 //connect to the database
 const db = mysql.createConnection({
@@ -97,12 +97,11 @@ const viewEmployee = () => {
         ON employee.manager_id = manager.id
         `;
     //using promise method and  Query database
-    db.promise().query(sql, (err, result) =>{
-        if(err){
-            throw err;
-        }
-        console.log(result);
-    });
+    db.promise().query(sql) 
+    .then( ([rows,fields]) => {
+        console.table(rows);
+      })
+      .catch(console.log) 
 }
 //view add employee
 const addEmployee = () => {
