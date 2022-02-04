@@ -277,10 +277,10 @@ const addRole = () =>{
             name: 'salary',
             message: "Please enter the salary you want for this position?",
             },{
-                type: 'input', 
+                type: 'list', 
                 name: 'department',
                 message: "Please enter the department ID that this position belong to",
-                choice: department 
+                choices: department 
             }
         ])
 
