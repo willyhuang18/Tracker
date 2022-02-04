@@ -180,65 +180,58 @@ const updateEmployee = ()=> {
     //getting data from employee table
     const employee = `SELECT * FROM employee`;
     //using sql query to get the data frm sql file
-    db.promise().query(employee, (err, data) => {
+    db.query(employee, (err, data) => {
         if(err){
             console.log(err);
         }
-        const employeeId = data.map(({ id, firstName, lastName }) => (
+        const employeeId = data.map(({ id, first_name, last_name }) => (
             { 
-                name: firstName + lastName, value: id 
+                name: first_name + last_name, value: id 
             }
         ));
         console.log(employeeId);
-        inquirer.prompt([
-            {
-                type: 'list',
-                name: 'name',
-                message: "Who would you like to promotion with?",
-                choices: employeeId
+        //getting data from employee table
+        const role = `SELECT * FROM role`;
+        db.query(role, (err, data) => {
+            if(err){
+                console.log(err);
             }
-        ])
-        //then callback function
-        .then(choice => {
-            const employees = choice.name;
-            const input = [];
-            input.push(employees);
-            //getting data from employee table
-            const role = `SELECT * FROM role`;
-            
-            db.promise().query(role, (err, data) => {
-                if(err){
-                    console.log(err);
+            const roleId = data.map(({ id, title }) => (
+                { 
+                name: title, value: id 
                 }
-                const roleId = data.map(({ id, title }) => (
-                    { 
-                        name: title, value: id 
-                    }
-                ));
-              console.log(roleId);
-              inquirer.prompt([
-                  {
+            ));
+            console.log(roleId);
+            inquirer.prompt([
+                {
                     type: 'list',
-                    name: 'name',
+                    name: 'name',   
+                    message: "Who would you like to promotion with?",
+                    choices: employeeId
+                },{
+                    type: 'list',
+                    name: 'role',
                     message: "What is the position after promotion?",
                     choices: roleId  
-                  }
-              ])
-              //callback 
-              .then(response =>{
-                  const roles = response.role;
-                  input.push(roles)
-                  console.log(input);
-                  const employeeSql = `UPDATE employee SET role_id = ? WHERE id = ?`;
-                  db.query(employeeSql, (err, res)=>{
+                }
+            ])
+            //then callback function
+            .then(choice => {
+                const employees = choice.name;
+                const input = [];
+                input.push(employees);
+                const roles = choice.role;
+                input.push(roles)
+                console.log(input);
+                const employeeSql = `UPDATE employee SET role_id = ? WHERE id = ?`;
+                db.query(employeeSql, (err, res)=>{
                     if(err){
                         console.log(err);
-                    }
+                        }
                     console.log('Employee had promo');
                     viewEmployee();
-                  })
-              })  
-            })
+                    })
+            })  
         })
     })
 }
