@@ -263,11 +263,11 @@ const viewAllRole = () =>{
     FROM role
     INNER JOIN department ON role.department_id = department.id
     `;
-    db.promise().query(roleSql, (err, data) => {
-        if(err){
-            console.log(err);
-        }
-    })
+    db.promise().query(roleSql) 
+    .then( ([rows,fields]) => {
+        console.table(rows);
+      })
+      .catch(console.log)
 }
 
 //add role function 
@@ -338,11 +338,11 @@ const viewAllDepartment = () =>{
     id AS id, department.name AS department 
     FROM department
     `;
-    db.promise().query(deptSql, (err, data) =>{
-        if(err){
-            console.log(err);
-        }
-    } )
+    db.promise().query(deptSql) 
+    .then( ([rows,fields]) => {
+        console.table(rows);
+      })
+      .catch(console.log)
 }
 
 //Add department function 
