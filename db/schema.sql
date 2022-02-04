@@ -35,4 +35,10 @@ CREATE TABLE employee(
     FOREIGN KEY(role_id)
     REFERENCES role(id)
     ON DELETE SET NULL,
+    manager_id INT,
+    INDEX manager_index(manager_id),
+    CONSTRAINT con_manager 
+    FOREIGN KEY(manager_id)
+    REFERENCES employee(id)
+    ON DELETE SET NULL
 );
