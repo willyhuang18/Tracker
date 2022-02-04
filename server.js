@@ -46,7 +46,8 @@ const employeePrompt = () =>{
                  'View All Roles',
                  'Add Role',
                  'View All Departments',
-                 'Add Department'
+                 'Add Department',
+                 'No Further Action for the company'
             ]
     }])
     //give a switch method for the response
@@ -74,6 +75,8 @@ const employeePrompt = () =>{
             case 'Add Department':
                 addDepartment();
                 break;
+            case 'No Further Action for the company':
+                db.end();
             default:
                 console.log('Please enter one position');
         }
