@@ -255,25 +255,8 @@ const viewAllRole = () =>{
 
 //add role function 
 const addRole = () =>{
-    inquirer.prompt([
-        {
-         type: 'input', 
-         name: 'role',
-         message: "Please enter the position you would like to add?",
-        },
-        {
-        type: 'input', 
-        name: 'salary',
-        message: "Please enter the salary you want for this position?",
-        }
-    ])
-    .then( response => {
-        const money = [response.role, response.salary];
-
-        //getting data from department table
-        const depSql = `SELECT name, id FROM department`; 
-
-        db.promise().query(depSql, (err, data) => {
+    const depSql = `SELECT name, id FROM department`; 
+        db.query(depSql, (err, data) => {
             if(err){
                 console.log(err);
             }
@@ -283,31 +266,41 @@ const addRole = () =>{
                         name: name, value: id
                     }
                 ));
-            inquirer.prompt([
-                {
-                    type: 'input', 
-                    name: 'department',
-                    message: "Please enter the department that this position belong to",
-                    choice: department 
-                }
-            ])
+        inquirer.prompt([
+            {
+            type: 'input', 
+            name: 'role',
+            message: "Please enter the position you would like to add?",
+            },
+            {
+            type: 'input', 
+            name: 'salary',
+            message: "Please enter the salary you want for this position?",
+            },{
+                type: 'input', 
+                name: 'department',
+                message: "Please enter the department ID that this position belong to",
+                choice: department 
+            }
+        ])
+
             //callback
-            .then(response =>{
-                const dept = response.department;
-                money.push(dept);
+        .then(response =>{
+            const dept = response.department;
+            const money = [response.role, response.salary];
+            money.push(dept);
                 
-                const deptSql =`
-                INSERT INTO role (title, salary, department_id)
-                VALUES (?, ?, ?)
-                `;
-                //connect with the query
-                db.query(depSql, (err, data)=>{
-                    if(err){
-                        console.log(err);
-                    }
-                    console.log(response.role + 'is successfully added');
-                    viewAllRole();
-                })
+            const deptSql =`
+            INSERT INTO role (title, salary, department_id)
+            VALUES (?, ?, ?)
+            `;
+            //connect with the query
+            db.query(deptSql, money, (err, data)=>{
+                if(err){
+                    console.log(err);
+                }
+                console.log(response.role + 'is successfully added');
+                viewAllRole();
             })
         })
     })
