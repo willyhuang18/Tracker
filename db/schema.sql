@@ -10,7 +10,7 @@ CREATE TABLE department(
 
 CREATE TABLE role(
     id INT PRIMARY KEY AUTO_INCREMENT,
-    title VARCHAR(30) NOT NULL,
+    title VARCHAR(40) NOT NULL,
     salary DECIMAL NOT NULL,
     department_id  INT,
     -- using Index
@@ -35,10 +35,4 @@ CREATE TABLE employee(
     FOREIGN KEY(role_id)
     REFERENCES role(id)
     ON DELETE SET NULL,
-    manager_id INT
-    INDEX manager_index (manager_id),
-    CONSTRAINT con_manager 
-    FOREIGN KEY (manager_id) 
-    REFERENCES employee(id) 
-    ON DELETE SET NULL
 );
