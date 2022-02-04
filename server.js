@@ -4,6 +4,8 @@ const mysql = require('mysql2')
 const inquirer = require('inquirer'); 
 // import console.table
 const table  = require('console.table');
+//import style 
+const figlet = require('figlet');
 
 //connect to the database
 const db = mysql.createConnection({
@@ -26,13 +28,13 @@ db.connect(err => {
 
 
 //welcome image
-console.log("*---------------------------------*");
-console.log("|                                 |");
-console.log("|             Welcome             |");
-console.log("|                to               |");
-console.log("|            the Company          |");
-console.log("|                                 |");
-console.log("*---------------------------------*");
+console.log(figlet.textSync(`WELCOME TO    THE COMPANY`, {
+    font: 'Standard',
+    horizontalLayout: 'fitted',
+    verticalLayout: 'default',
+    width: 80,
+    whitespaceBreak: true
+}));
 
 //adding prompt for the user
 const employeePrompt = () =>{
